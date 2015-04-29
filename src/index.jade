@@ -1,0 +1,171 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    title EDD y TDD
+
+    link(rel='stylesheet', type='text/css', href='build/build.css')
+
+  body
+
+    article
+
+      section
+        h1 Estructuras de Datos
+
+      section
+        h2 ¿Qué son?
+        p Las estructuras de datos son un medio para manejar grandes cantidades de datos de manera eficiente
+
+      section
+        h2.bullet Binary Search Tree
+        p Un árbol binario no vacío, de raíz R, es un árbol binario de búsqueda si:
+        ul
+          li
+            p En caso de tener subárbol izquierdo, la raíz R debe ser mayor que el valor máximo almacenado en el subárbol izquierdo, y que el subárbol izquierdo sea un árbol binario de búsqueda.
+          li
+            p En caso de tener subárbol derecho, la raíz R debe ser menor que el valor mínimo almacenado en el subárbol derecho, y que el subárbol derecho sea un árbol binario de búsqueda.
+
+      section
+        h2 Binary Search Tree
+        p La base de un árbol es un nodo
+        pre
+          code.language-javascript.
+            function Node(val) {
+              this.value = val;
+              this.left = null;
+              this.right = null;
+            };
+
+      section
+        h2 Binary Search Tree
+        p Luego hacemos el contructor del árbol
+        pre
+          code.language-javascript.
+            function BinarySearchTree(){
+              this.root = null;
+            };
+
+      section
+        h2 Binary Search Tree
+        pre
+          code.language-javascript.
+            BinarySearchTree.prototype.push = function(val){
+             var root = this.root;
+
+             if(!root){
+                this.root = new Node(val);
+                return;
+             }
+
+             var currentNode = root;
+             var newNode = new Node(val);
+
+             while(currentNode){
+               if (val < currentNode.value) {
+                    if(!currentNode.left){
+                       currentNode.left = newNode;
+                       break;
+                    } else {
+                       currentNode = currentNode.left;
+                    }
+               } else {
+                   if (!currentNode.right) {
+                      currentNode.right = newNode;
+                      break;
+                   } else {
+                      currentNode = currentNode.right;
+                   }
+               }
+            }
+          };
+
+      section
+        h2 Stack
+        pre
+          code.language-javascript.
+            var Node = function(data){
+              this.data = data;
+              this.previous = null;
+            };
+
+            var Stack = function(){
+              this.top = null;
+              this.size = 0;
+            };
+
+            Stack.prototype.push = function(data) {
+              var node = new Node(data);
+
+              node.previous = this.top;
+              this.top = node;
+              this.size += 1;
+              return this.top;
+            };
+
+            Stack.prototype.pop = function() {
+              temp = this.top;
+              this.top = this.top.previous;
+              this.size -= 1;
+              return temp;
+            };
+
+      section
+        h2 Queue
+        pre
+          code.language-javascript.
+            var Node = function(data) {
+              this.data = data;
+              this.next = null;
+            };
+
+            var Queue = function() {
+              this.first = null;
+              this.size = 0;
+            };
+
+            Queue.prototype.enqueue = function(data) {
+              var node = new Node(data);
+
+              if (!this.first){
+                this.first = node;
+              } else {
+                n = this.first;
+                while (n.next) {
+                  n = n.next;
+                }
+                n.next = node;
+              }
+
+              this.size += 1;
+              return node;
+            };
+
+            Queue.prototype.dequeue = function() {
+              temp = this.first;
+              this.first = this.first.next;
+              this.size -= 1;
+              return temp;
+            };
+
+      section
+        h1 Test Driven Development (TDD)
+
+      section
+        h2.bullet ¿Qué es?
+        p  Es una practica de ingenieria de software que involucra otras dos prácticas:
+        ul
+          li
+            p Escribir las pruebas primero (Test First Development)
+          li
+            p Refactorización (Refactoring).
+
+      section
+        h2 TDD Loop
+        img(src="../images/tddloop.gif")
+
+      section
+        h2 Ejemplo de TDD
+
+    script(src='build/build.js')
