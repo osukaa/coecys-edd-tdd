@@ -166,6 +166,35 @@ html
         img(src="../images/tddloop.gif")
 
       section
-        h2 Ejemplo de TDD
+        h2.bullet ¿De que nos sirve esto?
+        ul
+          li Ayuda a pensar bien la funcionalidad antes de agregarla
+          li Permite tener un codigo mas simple, al irlo agregando en unidades pequeñas
+          li Reduce el esfuerzo de debuggear codigo, ya que unicamente se revisa el caso que fallo
+          li Es mas fácil entender el codigo a través de los tests
+
+      section
+        h2.bullet ¿Qué es lo malo?
+        p Nada es perfecto en esta vida
+        ul
+            li Como el programador hace los tests y el código, puede que existan casos que no haya tomado en cuenta
+            li Es muy dificil agregar tests a proyectos ya iniciados, y este esfuerzo aumenta con el tiempo
+            li Escribir y mantener una cantidad grande de tests require demasiado tiempo
+            li Los modulos mas flexibles pueden aceptar funcionalidad nueva sin necesidad de cambiar los tests
+            li El suite de tests puede darse en ambos extremos, muy pocos o demasiados
+
+
+      section
+        h2 Is TDD Dead?
+        p Es una serie de hangouts entre Kent Beck (Extreme Programming), David Heinemeier-Hansson (Ruby on Rails), moderado por Martin Fowler
+        a(href="http://martinfowler.com/articles/is-tdd-dead/")  link
+        span -
+        h3 ¿Por qué?
+        p David Heinemeier-Hanson se queja que TDD era una practica demasiado engorrosa debido a tanto stubing y mock de funciones y objectos externos a la unidad a probar.
+        a(href="http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html")  link
+
+      section
+        h1 Gracias
+
 
     script(src='build/build.js')
